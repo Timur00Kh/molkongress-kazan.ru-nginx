@@ -20,6 +20,7 @@ sudo nginx -s reload
 ```
 
 ```
+# /etc/nginx/nginx.conf
 http {
     ...
     include /home/developer/molkongress-kazan.ru-nginx/http/*.conf;
