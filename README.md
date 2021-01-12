@@ -111,7 +111,46 @@ server {
     error_log /var/log/nginx/project_front_error_ssl.log;
     access_log /var/log/nginx/project_front_access_ssl.log;
 }
+```
 
+Для прокси: 
+```
+server {
+    server_name timurkh.ru;
+    listen 80 default_server;
+    index index.html;
+
+    location /.well-known {
+        root /var/www/html;
+    }
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+
+}
+
+server {
+    server_name timurkh.ru;
+    listen 443 ssl;
+    root /var/lib/jenkins/workspace/timurkh-main-frontend/__sapper__/export;
+
+    ssl_certificate /etc/letsencrypt/live/timurkh.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/timurkh.ru/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/timurkh.ru/chain.pem;
+
+
+    location / {
+        proxy_redirect          off;
+        proxy_set_header        Host $host;
+        proxy_set_header        X-Real-IP $remote_addr;
+        proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header        X-Forwarded-Proto $scheme;
+        proxy_set_header        Upgrade $http_upgrade;
+        proxy_set_header        Connection "upgrade";
+        proxy_pass              http://127.0.0.1:3000/;
+    }
+}
 ```
 
 Для PHP: 
