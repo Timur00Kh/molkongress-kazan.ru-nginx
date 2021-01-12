@@ -177,9 +177,9 @@ server {
     root /home/developer/congress-backend/public;
     listen 443 ssl;
 
-    ssl_certificate /etc/letsencrypt/live/molkongress-kazan.ru/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/molkongress-kazan.ru/privkey.pem;
-    ssl_trusted_certificate /etc/letsencrypt/live/molkongress-kazan.ru/chain.pem;
+    ssl_certificate /etc/letsencrypt/live/api.molkongress-kazan.ru/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/api.molkongress-kazan.ru/privkey.pem;
+    ssl_trusted_certificate /etc/letsencrypt/live/api.molkongress-kazan.ru/chain.pem;
 
     location / {
            add_header 'Access-Control-Allow-Origin' '*';
@@ -226,3 +226,7 @@ server {
 # Links 
 + [Nginx установка](https://losst.ru/ustanovka-nginx-ubuntu-16-04)
 + [certbot](https://certbot.eff.org/lets-encrypt/ubuntubionic-nginx)
+
+```
+sudo certbot certonly --webroot -d api.molkongress-kazan.ru -d www.api.molkongress-kazan.ru
+```
