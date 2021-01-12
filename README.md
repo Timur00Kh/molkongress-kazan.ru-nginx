@@ -75,7 +75,7 @@ sudo certbot certonly --standalone
 
 ## Nginx конфигурируем домены c SSL
 
-Для статического сайта 
+#### Для статического сайта 
 ```
 server {
     server_name molkongress-kazan.ru www.molkongress-kazan.ru;
@@ -113,7 +113,7 @@ server {
 }
 ```
 
-Для прокси: 
+#### Для прокси: 
 ```
 server {
     server_name timurkh.ru;
@@ -153,7 +153,7 @@ server {
 }
 ```
 
-Для PHP: 
+#### Для PHP: 
 ```
 server {
     server_name api.molkongress-kazan.ru www.api.molkongress-kazan.ru;
