@@ -65,7 +65,7 @@ sudo certbot certonly --nginx
 ```
 sudo apt-get install certbot
 
-# если Nginx запущен
+# если Nginx запущен (предпочтительнее, т.к. он запомнит как надо обновлять домен с запущенным Nginx)
 sudo certbot certonly --webroot
 
 # если Nginx не запущен
