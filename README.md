@@ -11,6 +11,23 @@ sudo apt install nginx
 sudo systemctl enable nginx
 ```
 
+```
+# /home/developer
+git clone https://github.com/Timur00Kh/molkongress-kazan.ru-nginx.git
+sudo nano /etc/nginx/nginx.conf
+sudo nginx -t
+sudo nginx -s reload
+```
+
+```
+http {
+    ...
+    include /home/developer/molkongress-kazan.ru-nginx/http/*.conf;
+    ...
+}
+```
+
+
 
 
 ## Nginx конфигурируем домены
